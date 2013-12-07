@@ -19,11 +19,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'timelease',                      # Or path to database file if using sqlite3.
+        'NAME': 'timelease',
         'USER': 'timelease',
         'PASSWORD': '---CHANGE-THIS-!!!---',     # Not used with sqlite3.
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',  # Set to empty string for default.
     }
 }
 
