@@ -22,3 +22,16 @@ class authenticate:
             return self.f(user, request, *args, **kwargs)
 
 
+class render_response:
+    f = None
+    user = None
+
+    def __init__(self, f, **kwargs):
+        self.f = f
+
+    def __call__(self, request, *args, **kwargs):
+    	"""
+    	@todo Implement decorator
+    	"""
+        pass
+
