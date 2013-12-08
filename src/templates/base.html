@@ -1,0 +1,18 @@
+{% extends "empty.html" %}
+
+{% block body %}
+	<div id="header">
+		Resource Time Leases
+	</div>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
