@@ -4,7 +4,6 @@
 """
 from django.shortcuts import redirect
 from timelease.settings import LOGIN_URL
-import logging
 
 
 class authenticate:
@@ -20,18 +19,3 @@ class authenticate:
             return redirect('%s/?next=%s' % (LOGIN_URL, request.path))
         else:
             return self.f(user, request, *args, **kwargs)
-
-
-class render_response:
-    f = None
-    user = None
-
-    def __init__(self, f, **kwargs):
-        self.f = f
-
-    def __call__(self, request, *args, **kwargs):
-    	"""
-    	@todo Implement decorator
-    	"""
-        pass
-
