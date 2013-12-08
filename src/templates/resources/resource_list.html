@@ -1,0 +1,17 @@
+{% extends "resources/base.html" %}
+
+{% block content %}
+	{% if resource_list %}
+	<ul>
+		{% for resource in resource_list %}
+		<li>
+			<a href="/{{ resource.slug }}/">{{ resource.name }}</a>  <i>{{ resource.description }}</i>
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<p>
+		No resources are available.
+	</p>
+	{% endif %}
+{% endblock %}
