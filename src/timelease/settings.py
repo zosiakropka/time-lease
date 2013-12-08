@@ -133,6 +133,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'res',
+
+    #external
+    'recurrence',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
