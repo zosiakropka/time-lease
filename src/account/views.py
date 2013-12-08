@@ -29,3 +29,7 @@ def signin(request):
 
     return render(request, 'account/signin.html', {"nxt": nxt, "failure": failure})
 
+
+def signup(request):
+
+    pass
