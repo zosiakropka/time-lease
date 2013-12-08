@@ -1,10 +1,17 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic.base import RedirectView
+from django.contrib import admin
+from timelease import settings
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^account/', include('account.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include('res.urls')),
+    (r'^favicon\.ico$', RedirectView.as_view(url=settings.MEDIA_URL + 'static/images/favicon.ico')),
     # Examples:
     # url(r'^$', 'timelease.views.home', name='home'),
     # url(r'^timelease/', include('timelease.foo.urls')),
