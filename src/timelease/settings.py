@@ -1,4 +1,8 @@
-# Django settings for timelease project.
+"""@package timelease.settings
+@author: Zosia Sobocinska
+
+Django settings for TimeLease project.
+"""
 
 DEBUG = True
 
