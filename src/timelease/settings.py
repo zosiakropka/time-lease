@@ -4,9 +4,7 @@ DEBUG = True
 
 if DEBUG:
     from os import path
-    PROJECT_DIR = path.dirname(__file__)
-    print (PROJECT_DIR)
-
+    PROJECT_DIR = path.dirname(__file__) + "/.."
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -78,7 +76,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    path.join(PROJECT_DIR, "../static") if DEBUG else None,
+    path.join(PROJECT_DIR, "static") if DEBUG else None,
 )
 
 # List of finder classes that know how to find static files in
@@ -115,7 +113,7 @@ ROOT_URLCONF = 'timelease.urls'
 WSGI_APPLICATION = 'timelease.wsgi.application'
 
 TEMPLATE_DIRS = (
-    path.join(PROJECT_DIR, "../templates") if DEBUG else None,
+    path.join(PROJECT_DIR, "templates") if DEBUG else None,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -145,7 +143,7 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-LOGS_PATH = path.join(PROJECT_DIR, "../logs/%s.log")
+LOGS_PATH = path.join(PROJECT_DIR, "../logs/%s.log") if DEBUG else None
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
