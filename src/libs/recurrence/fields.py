@@ -11,7 +11,7 @@ try:
         "^recurrence\.fields\.RecurrenceModelField",
     ])
 except ImportError:
-    pass 
+    pass
 
 
 class RecurrenceField(fields.Field):

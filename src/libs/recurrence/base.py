@@ -304,6 +304,8 @@ class Recurrence(object):
         self.rdates = list(rdates)
         self.exdates = list(exdates)
 
+        self.name = ""
+
     def __iter__(self):
         return self.occurrences()
 

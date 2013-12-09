@@ -216,4 +216,3 @@ def find_recurrence_i18n_js_catalog():
     # cache it for subsequent use
     _recurrence_javascript_catalog_url = url
     return url
-

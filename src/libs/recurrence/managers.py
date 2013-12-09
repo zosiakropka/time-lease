@@ -100,7 +100,7 @@ class RecurrenceManager(manager.Manager):
             dtend=to_utc(recurrence_obj.dtend))
 
         for rrule in recurrence_obj.rrules:
-            models.Rrule.objects.create_from_rule_object(
+            models.Rule.objects.create_from_rule_object(
                 choices.INCLUSION, rrule, recurrence_model)
         for exrule in recurrence_obj.exrules:
             models.Exrule.objects.create_from_rule_object(
