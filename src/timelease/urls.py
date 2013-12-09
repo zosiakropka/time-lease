@@ -8,10 +8,11 @@ from timelease import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
     url(r'^account/', include('account.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
     url(r'^', include('res.urls')),
-    (r'^favicon\.ico$', RedirectView.as_view(url=settings.MEDIA_URL + 'static/images/favicon.ico')),
     # Examples:
     # url(r'^$', 'timelease.views.home', name='home'),
     # url(r'^timelease/', include('timelease.foo.urls')),
