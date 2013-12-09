@@ -4,7 +4,8 @@
 """
 
 from django.contrib import admin
-from res.models import Resource
+from res.models import Resource, Occupation
 
 
 admin.site.register(Resource)
+admin.site.register(Occupation)
