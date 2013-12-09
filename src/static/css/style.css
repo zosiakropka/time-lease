@@ -1,0 +1,53 @@
+@media screen and (min-width: 300px) {
+	.calendar-day {
+		float: left;
+		width: calc(14% - 2px);
+		min-height: 1px;
+		text-align: center;
+		padding: 10px 0;
+		border: 1px solid white;
+	}
+	
+	.calendar-day:nth-child(7n+6):before {
+		content: "\00A0";
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+
+	.calendar-current {
+		border: 1px solid black;
+	}
+	
+	.calendar-day header {
+		background-color: #aaa;
+	}
+	
+	.calendar-day .quarter {
+		margin: 2px;
+		width: calc(25% - 2px);
+		float: left;
+	}
+	.calendar-day .quarter:nth-child(4n+3):before {
+		content: "\00A0";
+		display: block;
+		clear: both;
+		visibility: hidden;
+		line-height: 0;
+		height: 0;
+	}
+	
+	.calendar-day .quarter-occupied {
+		background-color: yellow;
+	}
+	
+	.calendar-day .quarter-free {
+		background-color: #afa;
+	}
+	
+	.calendar-day .quarter-booked {
+		background-color: #6af;
+	}
+}
