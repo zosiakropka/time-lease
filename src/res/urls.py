@@ -5,9 +5,7 @@
 
 from django.conf.urls import patterns, url
 
-from django.contrib import admin
 from django.utils import timezone
-admin.autodiscover()
 
 urlpatterns = patterns('')
 urlpatterns += patterns('res.views',
