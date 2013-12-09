@@ -6,5 +6,6 @@ Only one user ought to operate on sth (eg. access server time) at a time. To avo
 Requirements
 ----------------
 
-pytz
+python-pytz
+python-dateutil
 
