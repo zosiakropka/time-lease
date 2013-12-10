@@ -1,16 +1,21 @@
 {% load staticfiles %}
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static "css/style.css" %}" />
-    <link rel="stylesheet" href="{% static "css/reset.css" %}" />
-    <title>{% block title %}Resource Time Lease{% endblock %}</title>
-</head>
+<html lang="en" ng-app>
+	<head>
+		<link rel="stylesheet" href="{% static "css/style.css" %}" />
+		<link href='http://fonts.googleapis.com/css?family=Jura:600&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		{% block stylesheets %}{% endblock %}
+		<title>{% block title %}Resource Time Lease{% endblock %}</title>
+	</head>
 
-<body>
-	<script>timelease = {}; window.timelease = timelease;</script>
-    {% block body %}
-	{% endblock %}
-    {% block scripts %}
-	{% endblock %}
-</body>
+	<body>
+		
+		<script>
+			timelease = {};
+			window.timelease = timelease;
+		</script>
+		<script src="{% static "js/angular.min.js" %}"></script>
+
+		{% block body %}{% endblock %}
+		{% block scripts %}{% endblock %}
+	</body>
 </html>
