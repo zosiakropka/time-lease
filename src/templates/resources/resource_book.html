@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{% static "css/calendar.css" %}" />
+{% endblock %}
+
+{% block content %}
+<h1>{{ resource.name }}</h1>
+<p>
+	{{ resource.description }}
+</p>
+
+{% include "resources/resource_calendar.html" %}
+{% endblock %}

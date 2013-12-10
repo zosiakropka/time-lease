@@ -19,4 +19,8 @@ urlpatterns += patterns('res.views',
     url(r'^(?P<resource_slug>[a-zA-Z0-9_.-]+)/(?P<year>\d{4})-(?P<month>\d{1,2})?/$',
         'resource_calendar',
         name="resource_calendar"),
+
+    url(r'^(?P<resource_slug>[a-zA-Z0-9_.-]+)/(?P<year>\d{4})-(?P<month>\d{1,2})-(?P<day>\d{1,2})?/(?P<hour>\d{1,2})/(?P<minute>\d{1,2})?/$',
+        'resource_book',
+        name="resource_book"),
 )

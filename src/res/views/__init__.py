@@ -4,3 +4,4 @@
 """
 from res_calendar import resource_calendar
 from res_list import resource_list
+from res_book import resource_book
