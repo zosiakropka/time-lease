@@ -9,6 +9,7 @@ from django.core.validators import MaxValueValidator
 from django.db.models.fields import IntegerField, CharField
 from django.db.models.fields.related import ForeignKey
 from django.contrib.auth.models import User
+from django.utils.datetime_safe import datetime
 
 
 class Resource(models.Model):
@@ -28,7 +29,7 @@ class Occupation(models.Model):
     """
     QUARTERS = 4
     HOURS = 24
-    
+
     BOOK = 'b'
     LIKE = 'l'
     LEVELS = (
@@ -45,11 +46,11 @@ class Occupation(models.Model):
 
     @property
     def abs_quarter_start(self):
-        return 4 * self.hour + self.quarter
+        return self.QUARTERS * self.hour + self.quarter
 
     @property
     def abs_quarter_stop(self):
-        return self.abs_quarter_start + self.quarters
+        return self.abs_quarter_start + self.quarters + 1
 
     @staticmethod
     def abs_quarter(hour, quarter):
@@ -59,8 +60,8 @@ class Occupation(models.Model):
         return self.user.username
 
     def date_overlaps(self, date):
-        return date in self.recurrences.rdates
+        return self.recurrences.occurs(date)
 
     def quarter_overlaps(self, hour, quarter):
-        abs_quarter = self.abs_quarter(hour, quarter)
+        abs_quarter = self.abs_quarter(hour, quarter) + 1
         return self.abs_quarter_start < abs_quarter and self.abs_quarter_stop > abs_quarter
