@@ -230,7 +230,7 @@ table.recurrence-calendar .body td.header,
 table.recurrence-calendar .body td.day {
     padding: .25em;
     text-align: center;
-    vertical-align: center;
+    vertical-align: middle;
 }
 
 table.recurrence-calendar .body td.day {

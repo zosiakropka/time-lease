@@ -304,7 +304,7 @@ class Recurrence(object):
         self.rdates = list(rdates)
         self.exdates = list(exdates)
 
-        self.name = ""
+        self.__name__ = ""
 
     def __iter__(self):
         return self.occurrences()
@@ -457,7 +457,7 @@ class Recurrence(object):
         self, after, before,
         inc=False, dtstart=None, dtend=None, cache=False):
         """
-        Returns the first recurrence after the given
+        Returns list of the recurrences between `before` and `after` dates.
         `datetime.datetime` instance.
 
         :Parameters:
@@ -624,8 +624,8 @@ class Weekday(object):
         else:
             return Rule.weekdays[self.number]
 
-    weekday = property(lambda self: self.number);
-    n = property(lambda self: self.index);
+    weekday = property(lambda self: self.number)
+    n = property(lambda self: self.index)
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = (

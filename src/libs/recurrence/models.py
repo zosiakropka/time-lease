@@ -43,3 +43,7 @@ class Param(models.Model):
     param = models.CharField(max_length=16)
     value = models.IntegerField()
     index = models.IntegerField(default=0)
+
+
+class Exrule(Rule):
+    pass
