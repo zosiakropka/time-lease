@@ -7,11 +7,15 @@ from timelease.settings import LOGIN_URL
 
 
 class authenticate:
+    __name__ = None
+    __module = None
     f = None
     user = None
 
     def __init__(self, f):
         self.f = f
+        self.__name__ = f.__name__
+        self.__module__ = f.__module__
 
     def __call__(self, request, *args, **kwargs):
         user = request.user
