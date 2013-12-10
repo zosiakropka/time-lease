@@ -23,3 +23,14 @@ class authenticate:
             return redirect('%s/?next=%s' % (LOGIN_URL, request.path))
         else:
             return self.f(user, request, *args, **kwargs)
+
+
+class not_implemented:
+    f = None
+    user = None
+
+    def __init__(self, f):
+        self.f = f
+
+    def __call__(self, request, *args, **kwargs):
+        raise Exception("Function %s.%s not implemented." % (self.f.__module__, self.f.__name__))
