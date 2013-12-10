@@ -384,6 +384,11 @@ class Recurrence(object):
         """
         return self.to_dateutil_rruleset(dtstart, dtend, cache).count()
 
+    def occurs(
+        self, dt):
+        occ_dt = self.after(dt, True)
+        return occ_dt and occ_dt.year == dt.year and occ_dt.month == dt.month and occ_dt.day == dt.day 
+
     def before(
         self, dt, inc=False,
         dtstart=None, dtend=None, cache=False):
