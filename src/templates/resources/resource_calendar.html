@@ -1,51 +1,45 @@
-{% extends "resources/base.html" %}
-
-{% block content %}
-<h1>{{ resource.name }}</h1>
-<p>
-	{{ resource.description }}
-</p>
+{% load res_extras %}
 
 <div>
-	{# <a href= "{% url 'res.views.resource_calendar' year month-1 "prv" %}">&lt;&lt; Prev</a> #}
-	{# <a href= "{% url 'res.views.resource_calendar' resource_slug=resource.slug year=n_year month=n_month %}">Next &gt;&gt;</a> #}
-	<a href= "/{{ resource.slug }}/{{ p_year }}-{{ p_month }}">&lt;&lt; Prev</a>
-	<a href= "/{{ resource.slug }}/">Current</a>
-	<a href= "/{{ resource.slug }}/{{ n_year }}-{{ n_month }}">Next &gt;&gt;</a>
-	
-	<h2>{{ mname }} {{ year }}</h2>
-
-	<div class="month">
-		{% for week in month_days %}
+	<article class="calendar-month">
+	<header>{{ mname }} {{ year }}</header>
+	{% for week, weekno in month_days %}
+		<div class="calendar-week-switch" ng-init="show_week_{{weekno}}=false" ng-click="show_week_{{weekno}}=!show_week_{{weekno}}">
+			<div class="calendar-week-switch-arr">
+				<span ng-show="!show_week_{{weekno}}">▼</span>
+				<span ng-show="show_week_{{weekno}}">▲</span>
+			</div>
+			<ul class="calendar-week-shortcut">
+				{% for day, entries, current, dname, hours in week %}
+				<li {% if day != 0 %}class="empty"{% endif %}>{% if day != 0 %}{{ day }}{% endif %}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="calendar-week" ng-show="show_week_{{weekno}}">
 			{% for day, entries, current, dname, hours in week %}
-
 				<!-- TD style: empty | day | current; onClick handler and highlight  -->
 				<section class="calendar-day
 				{% if day == 0 %}calendar-empty{% endif %}
-				{% if day != 0 and not current %}calendar-day{% endif %}
-				{% if day != 0 and current %}calendar-current{% endif %}"
-				{% if day != 0 %}
-					{# onClick="parent.location='{% url 'cal.views.day' year month day %}'" #}
-				{% endif %} ><!-- Day number and entry snippets -->
+				{% if day != 0 and current %}calendar-current{% endif %}">
+				<!-- Day number and entry snippets -->
 				{% if day != 0 %}
 					<header>
-						<p>{{ dname }}</p>
-						<p>{{ day }}</p>
+						<p class="calendar-day-name">{{ dname }}</p>
+						<p class="calendar-day-number">{{ day }}</p>
 					</header>
 					<nav>
 						<ul>
 							{% for hour, quarters in hours %}
-							<li>
-								<p>{{ hour }}</p>
-								<div>
-									<ul>
-										{% for quarter, ownership in quarters %}
-										<li class="quarter {% if ownership == "free" %}quarter-free {% endif %} {% if ownership == "occupied" %}quarter-occupied {% endif %} {% if ownership == "booked" %}quarter-booked {% endif %}">
+							<li class="calendar-hour">
+								<ul>
+									{% for quarter, ownership in quarters %}
+									{% if ownership != "occupied" %}<a href= "/{{ resource.slug }}/{{ year }}-{{ month }}-{{ day }}/{{ quarter|urly_hour }}">{% endif %}
+										<li class="calendar-quarter {% if ownership == "free" %}calendar-quarter-free {% elif ownership == "occupied" %}calendar-quarter-occupied {% elif ownership == "booked" %}calendar-quarter-booked {% endif %}">
 											{{quarter}}
 										</li>
-										{% endfor %}
-									</ul>
-								</div>
+									{% if ownership == "free" %}</a>{% endif %}
+									{% endfor %}
+								</ul>
 							</li>
 							{% endfor %}
 						</ul>
@@ -57,8 +51,20 @@
 				{% endif %}
 				</section>
 			{% endfor %}
-		{% endfor %}
-	</div>
+		</div>
+	{% endfor %}
+	<nav class="calendar-browse">
+		<ul>
+			<a href= "/{{ resource.slug }}/{{ p_year }}-{{ p_month }}">
+				<li>◄</li>
+			</a>
+			<a href= "/{{ resource.slug }}/">
+				<li>Current</li>
+			</a>
+			<a href= "/{{ resource.slug }}/{{ n_year }}-{{ n_month }}">
+				<li>►</li>
+			</a>
+		</ul>
+	</nav>
+	</article>
 </div>
-
-{% endblock %}
