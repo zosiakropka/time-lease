@@ -1,0 +1,23 @@
+@import "_reset.css";
+
+body {
+	background-color: rgb(0, 129, 129);
+	color: #fff;
+	font-family: 'Jura', sans-serif;
+}
+
+a:link, a:visited {
+	color: rgb(255, 255, 77);
+}
+a:hover {
+	color: rgb(255, 255, 77);
+}
+
+header#main-header {
+	background-color: rgb(0, 228, 210);;
+	line-height: 2rem;
+	font-size: 1rem;
+}
+header#main-header a:link, header#main-header a:visited {
+	color: rgb(0, 102, 86);
+}

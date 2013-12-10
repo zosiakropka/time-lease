@@ -42,3 +42,7 @@ caption, th {
 q:after, q:before {
   content: "";
 }
+
+html, body {
+	min-height: 100%;
+}

@@ -1,11 +1,117 @@
-@media screen and (min-width: 300px) {
+.calendar-browse li {
+	display: block;
+	width: 33.3333333%;
+	float: left;
+	background-color: rgb(53, 162, 152);
+	line-height: 2rem;
+}
+.calendar-browse a:link, .calendar-browse a:visited {
+	color: rgb(127, 236, 180);
+}
+
+.calendar-month {
+	text-align: center;
+}
+.calendar-month header {
+	line-height: 2.5rem;
+	font-size: 1.5rem;
+}
+.calendar-day, .calendar-week-switch {
+	display: block;
+	border-radius: 5px;
+	overflow: auto;
+	margin: 1rem 0;
+}
+.calendar-day {
+	background-color: #fff;
+	color: rgb(0, 96, 100);
+}
+.calendar-week-switch {
+	background-color: rgb(51, 145, 137);
+	color: rgb(15, 110, 116);
+}
+.calendar-week-switch li, .calendar-week-switch .calendar-week-switch-arr {
+	display: block;
+	float: left;
+	height: auto;
+	width: 12.5%;
+	min-height: 1px;
+	font-size: 2rem;
+}
+.calendar-current {
+	background-color: rgb(37, 190, 148);
+	color: #fff;
+}
+.calendar-hour {
+	overflow: auto;
+}
+.calendar-hour:nth-child(odd) {
+	background-color: rgb(140, 202, 192);
+}
+
+.calendar-quarter {
+	font-size: 0.8rem;
+	overflow: hidden;
+	border-radius: 0.3rem;
+	line-height: 1.3rem;
+}
+
+.calendar-quarter-occupied {
+	background-color: #FFC2B3;
+	color: #9E1E1A;
+}
+.calendar-quarter-occupied:hover {
+	background-color: #990500;
+	color: #FFE1DA;
+}
+
+.calendar-quarter-free {
+	background-color: #D2EBFF;
+	color: #1C416F;
+}
+	
+.calendar-quarter-free:hover {
+	background-color: #0D77A8;
+	color: #DDE8F8;
+}
+.calendar-empty {
+	opacity: 0;
+}
+
+.calendar-quarter-booked {
+	background-color: #8CEB68;
+	color: #284713;
+}
+	
+.calendar-quarter-booked:hover {
+	background-color: #00700D;
+	color: #F9FFD7;
+}
+	
+@media screen and (max-width: 600px) {
 	.calendar-day {
+		display: block;
+	}
+	.calendar-empty {
+		display: none;
+	}
+	.calendar-quarter {
+		width: calc(25% - 0.6rem);
 		float: left;
-		width: calc(14% - 2px);
+		margin: 0.3rem;
+		padding: 0.2rem 0;
+	}
+}
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+	
+	.calendar-empty {
 		min-height: 1px;
+	}
+	.calendar-day {
+		margin: 0.2rem;
+		float: left;
+		width: calc(14.285714286% - 0.4rem);
 		text-align: center;
-		padding: 10px 0;
-		border: 1px solid white;
 	}
 	
 	.calendar-day:nth-child(7n+6):before {
@@ -17,20 +123,12 @@
 		height: 0;
 	}
 
-	.calendar-current {
-		border: 1px solid black;
-	}
-	
-	.calendar-day header {
-		background-color: #aaa;
-	}
-	
-	.calendar-day .quarter {
-		margin: 2px;
-		width: calc(25% - 2px);
+	.calendar-quarter {
+		margin: 0.2rem;
+		width: calc(50% - 0.4rem);
 		float: left;
 	}
-	.calendar-day .quarter:nth-child(4n+3):before {
+	.calendar-day .calendar-quarter:nth-child(2n+1):before {
 		content: "\00A0";
 		display: block;
 		clear: both;
@@ -38,16 +136,53 @@
 		line-height: 0;
 		height: 0;
 	}
-	
-	.calendar-day .quarter-occupied {
-		background-color: yellow;
+	.calendar-day nav {
+		display: block;
+		width: 100%;
+	}
+	.calendar-day .calendar-hour {
+		overflow: auto;
 	}
 	
-	.calendar-day .quarter-free {
-		background-color: #afa;
+}
+	
+@media screen and (min-width: 1024px) {	
+	.calendar-empty {
+		display: none;
+	}
+	.calendar-month {
+		text-align: center;
+		width: 100%;
+		display: table;
+	}
+	.calendar-month header {
+		text-align: center;
+	}
+	.calendar-day {
+		overflow: auto;
+		margin: 1rem 0;
+	}
+	.calendar-day header {
+		width: 4%;
+		float: left;
+		display: block;
+	}
+	.calendar-day header .calendar-day-name {
+		line-height: 2rem;
+		font-weight: bold;
+	}
+	.calendar-day header .calendar-day-number {
+		line-height: 4rem;
+	}
+	.calendar-hour {
+		width: 4%;
+		float: left;
+		display: block;
+	}
+	.calendar-quarter {
+		text-align: center;
+		display: block;
+		margin: 0.2rem;
 	}
 	
-	.calendar-day .quarter-booked {
-		background-color: #6af;
-	}
 }
